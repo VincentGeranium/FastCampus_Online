@@ -16,9 +16,10 @@ final class TabBarController: UITabBarController {
 }
 
 extension TabBarController {
-    func setupFeedViewController() -> UIViewController {
-        let feedViewController: UIViewController = {
-            let viewController = UIViewController()
+    func setupFeedViewController() -> UINavigationController {
+        
+        let rootViewController: FeedViewController = {
+            let viewController = FeedViewController()
             viewController.tabBarItem = UITabBarItem(
                 title: nil,
                 image: UIImage(systemName: "house"),
@@ -26,6 +27,8 @@ extension TabBarController {
             )
             return viewController
         }()
+        
+        let feedViewController = UINavigationController(rootViewController: rootViewController)
         
         return feedViewController
     }
