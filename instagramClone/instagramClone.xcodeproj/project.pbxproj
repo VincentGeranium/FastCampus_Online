@@ -59,6 +59,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BFEA90512801A5DA00474EAF /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				BF4DF71327FD2A4400EB013B /* FeedViewController.swift */,
+				BF455E7C27FD249800752097 /* TabBarController.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		BFFE338C27FD21DC007AA884 = {
 			isa = PBXGroup;
 			children = (
@@ -82,8 +91,7 @@
 			children = (
 				BFFE339827FD21DC007AA884 /* AppDelegate.swift */,
 				BFFE339A27FD21DC007AA884 /* SceneDelegate.swift */,
-				BF4DF71327FD2A4400EB013B /* FeedViewController.swift */,
-				BF455E7C27FD249800752097 /* TabBarController.swift */,
+				BFEA90512801A5DA00474EAF /* Scenes */,
 				BFFE33A127FD21DF007AA884 /* Assets.xcassets */,
 				BFFE33A327FD21DF007AA884 /* LaunchScreen.storyboard */,
 				BFFE33A627FD21DF007AA884 /* Info.plist */,
