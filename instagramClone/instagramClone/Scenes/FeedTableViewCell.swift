@@ -9,6 +9,18 @@ import Foundation
 import UIKit
 import SnapKit
 
+extension UIButton {
+    func setImage(systemName: String) {
+        contentHorizontalAlignment = .fill
+        contentVerticalAlignment = .fill
+        
+        imageView?.contentMode = .scaleAspectFit
+        imageEdgeInsets = .zero
+        
+        setImage(UIImage(systemName: systemName), for: .normal)
+    }
+}
+
 final class FeedTableViewCell: UITableViewCell {
     static let reuseIdentifier: String = "FeedTableViewCell"
     
