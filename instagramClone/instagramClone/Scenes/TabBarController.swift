@@ -33,9 +33,9 @@ extension TabBarController {
         return feedViewController
     }
     
-    func setupProfileViewController() -> UIViewController {
-        let personViewController: UIViewController = {
-            let viewController = UIViewController()
+    func setupProfileViewController() -> UINavigationController {
+        let rootViewController: ProfileViewController = {
+            let viewController = ProfileViewController()
             viewController.tabBarItem = UITabBarItem(
                 title: nil,
                 image: UIImage(systemName: "person"),
@@ -44,6 +44,8 @@ extension TabBarController {
             return viewController
         }()
         
-        return personViewController
+        let profileViewController = UINavigationController(rootViewController: rootViewController)
+        
+        return profileViewController
     }
 }
