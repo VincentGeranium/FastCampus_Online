@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		04BE8F152547A0A9681A4FFB /* Pods_instagramClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25863DA6B9CCAFED774FCEA3 /* Pods_instagramClone.framework */; };
 		BF0DCC1F2806A9BF00269FCD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0DCC1E2806A9BF00269FCD /* ProfileViewController.swift */; };
+		BF25EC692866F6F400E76F32 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25EC682866F6F400E76F32 /* UIView+.swift */; };
+		BF25EC6B28671DA200E76F32 /* ProfileDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25EC6A28671DA200E76F32 /* ProfileDataView.swift */; };
+		BF25EC6D28681B8E00E76F32 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25EC6C28681B8E00E76F32 /* ProfileCollectionViewCell.swift */; };
 		BF44A7562802A7E300C3D63F /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF44A7552802A7E300C3D63F /* FeedTableViewCell.swift */; };
 		BF44A7582803C2A700C3D63F /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF44A7572803C2A700C3D63F /* UIButton+.swift */; };
 		BF455E7D27FD249800752097 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF455E7C27FD249800752097 /* TabBarController.swift */; };
@@ -24,6 +27,9 @@
 		25863DA6B9CCAFED774FCEA3 /* Pods_instagramClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instagramClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81E1F6D3FFE1DC1AF3625BB0 /* Pods-instagramClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramClone.release.xcconfig"; path = "Target Support Files/Pods-instagramClone/Pods-instagramClone.release.xcconfig"; sourceTree = "<group>"; };
 		BF0DCC1E2806A9BF00269FCD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BF25EC682866F6F400E76F32 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		BF25EC6A28671DA200E76F32 /* ProfileDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataView.swift; sourceTree = "<group>"; };
+		BF25EC6C28681B8E00E76F32 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF44A7552802A7E300C3D63F /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		BF44A7572803C2A700C3D63F /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		BF455E7C27FD249800752097 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				BF0DCC1E2806A9BF00269FCD /* ProfileViewController.swift */,
+				BF25EC6A28671DA200E76F32 /* ProfileDataView.swift */,
+				BF25EC6C28681B8E00E76F32 /* ProfileCollectionViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -116,6 +124,7 @@
 				BFFE339827FD21DC007AA884 /* AppDelegate.swift */,
 				BFFE339A27FD21DC007AA884 /* SceneDelegate.swift */,
 				BF44A7572803C2A700C3D63F /* UIButton+.swift */,
+				BF25EC682866F6F400E76F32 /* UIView+.swift */,
 				BFEA90512801A5DA00474EAF /* Scenes */,
 				BFFE33A127FD21DF007AA884 /* Assets.xcassets */,
 				BFFE33A327FD21DF007AA884 /* LaunchScreen.storyboard */,
@@ -242,9 +251,12 @@
 				BF44A7582803C2A700C3D63F /* UIButton+.swift in Sources */,
 				BFFE339927FD21DC007AA884 /* AppDelegate.swift in Sources */,
 				BF4DF71427FD2A4400EB013B /* FeedViewController.swift in Sources */,
+				BF25EC6D28681B8E00E76F32 /* ProfileCollectionViewCell.swift in Sources */,
+				BF25EC692866F6F400E76F32 /* UIView+.swift in Sources */,
 				BF0DCC1F2806A9BF00269FCD /* ProfileViewController.swift in Sources */,
 				BFFE339B27FD21DC007AA884 /* SceneDelegate.swift in Sources */,
 				BF44A7562802A7E300C3D63F /* FeedTableViewCell.swift in Sources */,
+				BF25EC6B28671DA200E76F32 /* ProfileDataView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
