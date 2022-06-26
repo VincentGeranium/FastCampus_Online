@@ -61,6 +61,24 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
+    private let photoDataView: ProfileDataView = ProfileDataView(count: 15, title: "게시물")
+    private let followerDataView: ProfileDataView = ProfileDataView(count: 100, title: "팔로워")
+    private let followingDataView: ProfileDataView = ProfileDataView(count: 7, title: "팔로잉")
+    
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0.5
+        layout.minimumInteritemSpacing = 0.5
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemBackground
+        collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: ProfileCollectionViewCell.reuseIdentifier)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        return collectionView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,7 +86,33 @@ final class ProfileViewController: UIViewController {
         setupLayout()
     }
 }
+// MARK: - UICollectionViewDataSource의 메서드 관리를 위한 extension
+extension ProfileViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCollectionViewCell.reuseIdentifier, for: indexPath) as? ProfileCollectionViewCell else { return UICollectionViewCell() }
+        
+        DispatchQueue.main.async {
+            cell.setupLayout()
+            cell.setupImage(with: UIImage())
+        }
+        
+        return cell
+    }
+}
 
+extension ProfileViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let widthAndHeight: CGFloat = (collectionView.frame.width / 3) - 1.0
+        
+        return CGSize(width: widthAndHeight, height: widthAndHeight)
+    }
+}
+
+// MARK: - Layout 관리를 위한 extension.
 private extension ProfileViewController {
     func setupNavigationItems() {
         navigationItem.title = "User name"
@@ -77,10 +121,46 @@ private extension ProfileViewController {
             image: UIImage(systemName: "ellipsis"),
             style: .plain,
             target: self,
-            action: nil
+            action: #selector(didTapRightBarButton)
         )
         
         navigationItem.rightBarButtonItem = rightBarButton
+    }
+    
+    @objc func didTapRightBarButton() {
+        let actionSheet = UIAlertController(
+            title: nil,
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+        
+        [
+            UIAlertAction(
+                title: "회원 정보 변경",
+                style: .default,
+                handler: { alertAction in
+                    print("\(String(describing: alertAction.title?.description)) Tap")
+                }
+            ),
+            
+            UIAlertAction(
+                title: "탈퇴하기",
+                style: .destructive,
+                handler: { alertAction in
+                    print("\(String(describing: alertAction.title?.description)) Tap")
+                }
+            ),
+            
+            UIAlertAction(
+                title: "닫기",
+                style: .cancel,
+                handler: { alertAction in
+                    print("\(String(describing: alertAction.title?.description)) Tap")
+                }
+            ),
+        ].forEach { actionSheet.addAction($0) }
+        
+        present(actionSheet, animated: true, completion: nil)
     }
     
     func setupLayout() {
@@ -89,11 +169,18 @@ private extension ProfileViewController {
         buttonStackView.distribution = .fillEqually
         [followButton, messageButton].forEach { buttonStackView.addArrangedSubview($0) }
         
+        let dataStackView = UIStackView()
+        dataStackView.spacing = 4.0
+        dataStackView.distribution = .fillEqually
+        [photoDataView, followerDataView, followingDataView].forEach { dataStackView.addArrangedSubview($0) }
+        
         [
             profileImageView,
+            dataStackView,
             nameLabel,
             descriptionLabel,
-            buttonStackView
+            buttonStackView,
+            collectionView,
         ].forEach {
             view.addSubview($0)
         }
@@ -101,10 +188,16 @@ private extension ProfileViewController {
         let inset: CGFloat = 16.0
         
         profileImageView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide).inset(inset)
+            $0.top.equalTo(view.guide).inset(inset)
             $0.leading.equalToSuperview().inset(inset)
             $0.width.equalTo(80.0)
             $0.height.equalTo(profileImageView.snp.width)
+        }
+        
+        dataStackView.snp.makeConstraints {
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(inset)
+            $0.trailing.equalToSuperview().inset(inset)
+            $0.centerY.equalTo(profileImageView.snp.centerY)
         }
         
         nameLabel.snp.makeConstraints {
@@ -123,6 +216,13 @@ private extension ProfileViewController {
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(12.0)
             $0.leading.equalTo(nameLabel.snp.leading)
             $0.trailing.equalTo(nameLabel.snp.trailing)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.top.equalTo(buttonStackView.snp.bottom).offset(16.0)
+            $0.bottom.equalToSuperview()
         }
     }
 }
