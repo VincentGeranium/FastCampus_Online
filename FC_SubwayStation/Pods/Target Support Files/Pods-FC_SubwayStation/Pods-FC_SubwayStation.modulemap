@@ -1,0 +1,6 @@
+framework module Pods_FC_SubwayStation {
+  umbrella header "Pods-FC_SubwayStation-umbrella.h"
+
+  export *
+  module * { export * }
+}
