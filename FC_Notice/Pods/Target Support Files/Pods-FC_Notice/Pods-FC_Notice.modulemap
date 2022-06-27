@@ -1,0 +1,6 @@
+framework module Pods_FC_Notice {
+  umbrella header "Pods-FC_Notice-umbrella.h"
+
+  export *
+  module * { export * }
+}

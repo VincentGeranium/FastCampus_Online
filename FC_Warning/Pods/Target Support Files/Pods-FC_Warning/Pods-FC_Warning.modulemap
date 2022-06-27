@@ -1,0 +1,6 @@
+framework module Pods_FC_Warning {
+  umbrella header "Pods-FC_Warning-umbrella.h"
+
+  export *
+  module * { export * }
+}
